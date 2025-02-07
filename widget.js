@@ -100,8 +100,8 @@ window.addEventListener("onEventReceived", function (obj) {
 
 function addMessage(data, message) {
   tchat.insertAdjacentHTML(
-    "beforeend", /*html*/
-    `<div>
+    "beforeend" /*html*/,
+    `<div id="message-${data.msgId}" class="message" data-sender="${data.userId}">
       ${message}
     </div>`
   );
