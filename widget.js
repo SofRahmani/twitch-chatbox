@@ -71,7 +71,7 @@ window.addEventListener("onEventReceived", function (obj) {
               msgId: "43285909-412c-4eee-b80d-89f72ba53142",
             },
             renderedText:
-              '!Howdy My name is Bill and gg ? I am here to serve <img src="https://static-cdn.jtvnw.net/emoticons/v1/25/1.0" srcset="https://static-cdn.jtvnw.net/emoticons/v1/25/1.0 1x, https://static-cdn.jtvnw.net/emoticons/v1/25/1.0 2x, https://static-cdn.jtvnw.net/emoticons/v1/25/3.0 4x" title="Kappa" class="emote">',
+              'Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui repellat saepe tenetur laudantium, voluptate sapiente consequuntur perferendis enim eum accusamus aut, magni nemo reprehenderit a, nobis ex similique necessitatibus beatae! Odio, fugit quia. Omnis et velit tempore soluta exercitationem illo eum nisi repellendus adipisci Incidunt reprehenderit ipsam ipsum voluptates maxime molestias corrupti minima veritatis doloribus nemo dolor reiciendis aperiam minus est illum provident repudiandae! GG',
           },
         },
       });
@@ -93,14 +93,11 @@ window.addEventListener("onEventReceived", function (obj) {
   }
 
   if (obj.detail.listener !== "message") return;
-  if (data.text.startsWith("!") && hideCommands === "yes") return;
-  if (ignoredUsers.indexOf(data.nick) !== -1) return;
   addMessage(data, renderedText);
 });
 
 function addMessage(data, message) {
-  // const color = data.displayColor || `#${md5(data.displayName).subtr(26)}`;
-  const color = "#AA64EA";
+  const color = data.displayColor || `#${md5(data.displayName).subtr(26)}`;
 
   const hsl = hexToHSL(color);
   const luminosityDarker = Math.max(0, hsl.l - 10);
@@ -116,7 +113,7 @@ function addMessage(data, message) {
   let extraClass = "";
   if (message.trim().includes("?")) {
     extraClass = "has-question";
-  } else if (messageToLowerCase.includes(" gg ") || messageToLowerCase.includes(" gg!")) {
+  } else if (messageToLowerCase.includes(" gg ") || messageToLowerCase.includes(" gg!") || messageToLowerCase.includes(" gg") || messageToLowerCase.includes("gg")) {
     extraClass = "has-gg";
   } else if (message.trim().includes("!")) {
     extraClass = "has-exclamation";
@@ -132,6 +129,7 @@ function addMessage(data, message) {
       </div>
       <div class="content ${extraClass}">
         ${message}
+        <span class="decoration"></span>
       </div>
     </div>
     `

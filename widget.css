@@ -22,8 +22,7 @@ html {
 
 .message {
   position: relative;
-  width: fit-content;
-  height: fit-content;
+  width: 100%;
   animation: MessageIn 1.2s;
 }
 
@@ -63,7 +62,7 @@ html {
 }
 
 .name {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: 900;
   background: linear-gradient(to left, var(--color), var(--darker-color));
   color: white;
@@ -80,6 +79,26 @@ html {
   border: solid 1px var(--border-color);
   background-color: var(--lighter-color);
   text-wrap: pretty;
+}
+
+.decoration {
+  position: absolute;
+  bottom: -4.5px;
+  right: 20px;
+  width: 60px;
+  height: 6px;
+  background: linear-gradient(to left, var(--color), var(--darker-color));
+  border: solid 1px var(--border-color);
+  animation: DecorationIn 2s;
+}
+
+@keyframes DecorationIn {
+  from {
+    right: 280px;
+  }
+  to {
+    right: 20px;
+  }
 }
 
 .content.has-question::after,
@@ -106,12 +125,12 @@ html {
 
 .content.has-exclamation::after {
   content: "!!";
-  color: #FF5857;
+  color: #ff5857;
 }
 
 .content.has-gg::after {
   content: "GG";
   top: -10px;
   right: -15px;
-  color: #AA63E9;
+  color: #aa63e9;
 }
