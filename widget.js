@@ -93,6 +93,8 @@ window.addEventListener("onEventReceived", function (obj) {
   }
 
   if (obj.detail.listener !== "message") return;
+  if (data.text.startsWith("!") && hideCommands === "yes") return;
+  if (ignoredUsers.indexOf(data.nick) !== -1) return;
   addMessage(data, renderedText);
 });
 
