@@ -189,10 +189,8 @@ function HSLToString({ h, s, l }) {
 }
 
 function lightenColor(hex, factor = 0.1) {
-  // Supprime le caractère '#' si présent
   hex = hex.replace(/^#/, "");
 
-  // Développe la notation courte (ex: "abc" -> "aabbcc")
   if (hex.length === 3) {
     hex = hex
       .split("")
@@ -200,19 +198,14 @@ function lightenColor(hex, factor = 0.1) {
       .join("");
   }
 
-  // Convertir les composantes hex en valeurs numériques
   const r = parseInt(hex.substring(0, 2), 16);
   const g = parseInt(hex.substring(2, 4), 16);
   const b = parseInt(hex.substring(4, 6), 16);
 
-  // Mélange avec du blanc (255, 255, 255)
-  // Si factor = 0 -> couleur 100% blanche
-  // Si factor = 1 -> couleur d'origine
   const newR = Math.round((1 - factor) * 255 + factor * r);
   const newG = Math.round((1 - factor) * 255 + factor * g);
   const newB = Math.round((1 - factor) * 255 + factor * b);
 
-  // Fonction utilitaire pour convertir un nombre en hexadécimal sur deux chiffres
   const toHex = (c) => {
     const hexVal = c.toString(16);
     return hexVal.length === 1 ? "0" + hexVal : hexVal;
